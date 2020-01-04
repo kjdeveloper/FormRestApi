@@ -23,7 +23,8 @@ public class Comment {
     private String message;
     private LocalDateTime dateOfCreated;
 
-    @OneToOne(cascade = CascadeType.PERSIST, mappedBy = "comment")
+    @ManyToOne(cascade = CascadeType.PERSIST)
+    @JoinColumn(name = "user_id")
     private User user;
 
     @ManyToOne(cascade = CascadeType.PERSIST)

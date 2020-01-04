@@ -25,13 +25,15 @@ public class User {
     private String username;
     private String password;
 
-    @OneToOne(cascade = CascadeType.PERSIST)
-    @JoinColumn(name = "comment_id")
-    private Comment comment;
+    @OneToMany(cascade = CascadeType.PERSIST, mappedBy = "user")
+    @EqualsAndHashCode.Exclude
+    @ToString.Exclude
+    private Set<Comment> comments;
 
-    @OneToOne(cascade = CascadeType.PERSIST)
-    @JoinColumn(name = "topic_id")
-    private MainTopic mainTopic;
+    @OneToMany(cascade = CascadeType.PERSIST, mappedBy = "user")
+    @EqualsAndHashCode.Exclude
+    @ToString.Exclude
+    private Set<MainTopic> mainTopics;
 
     @ManyToMany(cascade = CascadeType.PERSIST)
     @JoinTable(name = "user_roles",

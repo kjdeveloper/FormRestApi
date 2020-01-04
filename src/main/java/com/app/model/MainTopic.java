@@ -30,6 +30,7 @@ public class MainTopic {
     @OneToMany(cascade = CascadeType.PERSIST, mappedBy = "mainTopic")
     private Set<Comment> comments;
 
-    @OneToOne(cascade = CascadeType.PERSIST, mappedBy = "mainTopic")
+    @ManyToOne(cascade = CascadeType.PERSIST)
+    @JoinColumn(name = "user_id")
     private User user;
 }
